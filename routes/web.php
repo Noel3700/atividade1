@@ -43,3 +43,30 @@ Route::get('/nomes/{nome}/{numero}',function($nome,$numero){
     };
     return;
 });
+
+route::get('/bemvindo/',function(){
+    return view('bemvindo');
+});
+
+route::get('/nomes1/{nome}/{apelido}',
+          function($nome=null,$apelido=null){
+              return view('mostranome',[
+                  'nome'=>$nome,
+                  'apelido'=>$apelido
+              ]);
+          });
+
+Route::get('/tarefas',function(){
+    $tarefas=[
+        'Comprar senha',
+        'Imprimir fotocópias',
+        'Carregar cartão'
+    ];
+    return view('/tarefas',[
+        'tarefas'=>$tarefas
+    ]);
+});
+
+route::get('/entrada','App\http\Controllers\PortalController@index');
+
+Route::get('/equipas','App\Http\Controllers\PortalController@listarEquipas');
