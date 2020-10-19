@@ -7,19 +7,36 @@ use Illuminate\Http\Request;
 class PortalController extends Controller
 {
     //
+
+        
+   
+    public $equipas=[
+        'Vilarinho',
+        'Aves',
+        'Benfica'
+    ];
+        
+         
     
     public function index(){
         return view('entrada');
     }
     
-    public function listarEquipas(){
-            $equipas=[
-                'Vilarinho',
-                'Aves',
-                'Benfica'
-            ];
-         return view('equipas',[
-             'equipas'=>$equipas
+    public function listarEquipas(Request $eq){
+            if (isset($eq->chave)){
+                if(is_numeric($eq->chave)&& $eq->chave=0 && $eq->chave<count($this->equipas)){
+                    $equipa= $this->equipas [$eq->chave];
+                }
+                else{
+                    $equipa='Não funciona';
+                    }  
+                
+        return view('listar-equipas', ['equipa'=>$equipa]);
+            }
+        
+            else{
+                    return view('listar-equipas', ['equipa'=>$this->equipa]);
+                    }  
          ]);
         }
     
@@ -27,19 +44,15 @@ class PortalController extends Controller
         
     
      public function listarEquipa(Request $request){
-            $equipas1=[
-                'Vilarinho',
-                'Aves',
-                'Benfica'
-            ];
+        
          $equipa=$request->chave;
-         if($equipa>=0 && $equipa<count ($equipas1)){
-                $equipa = $equipas1[$request->chave];
+         if($equipa>=0 && $equipa<count ($this->equipas)){
+                $equipa =$this->equipas[$request->chave];
          
                  
          }
          else{
-          $equipa='Não funciona meu caro parceiro da guerra naval de 1892';
+          $equipa='Não funciona';
          }
          return view('equipas', ['equipa'=>$equipa]);
      }
