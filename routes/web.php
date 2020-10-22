@@ -73,5 +73,8 @@ Route::get('/equipas','App\Http\Controllers\PortalController@listarEquipas')->na
 
 Route::get('/listar-equipas/{chave?}','App\Http\Controllers\PortalController@listarEquipa');
 
- 
 Route::get('/listar-equipas','App\Http\Controllers\PortalController@listarEquipas');
+
+Route::get('/contacto','App\Http\Controllers\PortalController@mostrarform')->name('contacto.mostrarform');
+
+Route::post('/processar','App\Http\Controllers\PortalController@processarform')->name('processar.form');

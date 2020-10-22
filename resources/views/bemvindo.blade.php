@@ -12,5 +12,5 @@ Bem-Vindo
 
 <a href="{{route('equipas.listarequipas')}}">ver equipas</a>
 
-<img src="{{asset('imagens/beta.jpg
+<img src="{{asset('imagens/beta.jpg')}}" widht=500px height=200px >
 @endsection

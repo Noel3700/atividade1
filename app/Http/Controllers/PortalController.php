@@ -41,9 +41,22 @@ class PortalController extends Controller
         }
     
     
-        
+   public function mostrarform(){
+       return view('contacto');
+   }     
     
-     
+     public function processarform(Request $r){
+         $nome = $r->nome;
+         $morada = $r->morada;
+         $automovrl = $r->automovel;
+         return view('form-enviado',[
+             'nome'=>$nome,
+             'morada'=>$morada,
+             'automovel'=>$automovel
+         ]);
+     }
+    
+    
 }
 
 
